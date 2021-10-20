@@ -4,14 +4,20 @@ import discord
 from botServ import botServ
 
 #discord client to send commands
-client = discord.Client()
+bot = discord.Client()
 
 #on start
-@client.event
+@bot.event
 async def on_ready():
   print("Bot connected")
 
+#post jpg file when key word is typed
+@bot.event
+async def on_message(message):
+  if 'tren' in message.content or 'Tren' in message.content:
+    await message.channel.send("Did someboady say... TREN!?!?")
+    await message.channel.send(file=discord.File('tren.jpg'))
 
 botServ()
 TOKEN=("Enter discord token here")
-client.run(TOKEN)
+bot.run(TOKEN)
